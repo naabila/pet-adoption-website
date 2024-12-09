@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy - Pet Adoption</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+
+
+</head>
+<body>
+<!-- ------- Navbar section====== -->
+ <nav class="py-5">
+    <div class="navbar w-4/5 mx-auto bg-base-100">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </div>
+            <!-- Mobile menu -->
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              <li><a class="text-xl">Home</a></li>
+            <li><a class="text-xl">Shope</a></li>
+            <li><a class="text-xl">Contact</a></li>
+            </ul>
+          </div>
+          <div class="logo gap-3 flex items-center justify-center">
+            <img src="./images/logo.webp" alt="logo">
+            <h2 class="font-[900] text-3xl">Peddy</h2>
+          </div>
+        </div>
+        <!-- lg device menu -->
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a class="text-xl">Home</a></li>
+            <li><a class="text-xl">Shope</a></li>
+            <li><a class="text-xl">Contact</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <img class="w-[50px] h-auto" src="./images/menu-icon.png" alt="menu-icon">
+        </div>
+      </div>
+ </nav>
+ 
+<!-- ------- Navbar section end====== -->
+
+
+<!-- ------- Hero section start====== -->
+<div class="hero min-h-screen py-16">
+    <div class="hero-content text-center">
+      <div class="lg:max-w-[70%]">
+        <h3 class="text-xl font-bold text-[#131313]/60">Bringing Families togather</h3>
+        <h1 class="font-[900] text-[72px]/[92px]">Your Path To Adoption Starts Here</h1>
+        <p class="py-6 text-[#131313] font-medium text-lg">
+            Start your journey to finding a furry friend today! Explore pets ready for adoption, learn about the process, and give a loving home to a pet in need.
+        </p>
+        <img src="./images/pet.webp" alt="pet">
+        <button class="bg-[#0E7A81] text-slate-50 text-xl px-8 py-5 rounded-md font-semibold"><a href="#adoption-section">View More</a></button>
+        
+      </div>
+    </div>
+  </div>
+<!-- ------- Adoption section start ====== -->
+ <section id="adoption-section" class="adoption-section lg:mt-12">
+<div class="w-4/5 mx-auto">
+<!-- heading -->
+<div class="heading-container flex justify-center">
+  <div class="heading-content lg:w-[50%] text-center px-6">
+    <h2 class="font-bold text-5xl my-5">Adopt  Your  Best Friend</h2>
+  <p class="text-[#131313] text-[18px]">Discover your new best friend today! Adopt a loving pet and give them a forever home. Explore a wide range of adorable animals waiting for you to bring them into your life</p>
+  </div>
+</div>
+<!-- heading -->
+<!-- Filter btn -->
+<div id="btn-container" class="my-8 grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center">
+
+</div>
+<!-- loader -->
+<div id="spinner"></div>
+<!-- Sort btn -->
+ <div id="sort-btn-container" class="flex justify-between my-10 items-center">
+  <h3 class="font-[900] text-xl ">Best Deal For You</h3>
+  <button id="sort-btn" class="bg-[#0E7A81] text-slate-50 text-xl px-8 py-3 rounded-md font-semibold">Sort By Price</button>
+ </div>
+ 
+
+<!-- Pet data card -->
+<div class="data-container grid grid-cols-12 items-start gap-4">
+  <div class="pet-card-container col-span-12 lg:col-span-9 mb-10 lg:px-5">
+     <!-- Not Found Section -->
+     <div id="no-info" class="hidden bg-slate-50 h-full p-[64px]">
+      <div class="not-found-content flex flex-col items-center">
+        <img class="w-[150px] h-auto" src="./images/error.webp" alt="error">
+      <h2 class="font-[900] text-4xl text-center">No Information Available</h2>
+      <p class="text-[#131313]/70 text-center mt-5">No information available at the moment. Please check back later for updates, or contact our team for more details. We appreciate your patience and understanding!</p>
+      </div>
+    </div>
+    <!-- Not Found Section -->
+  <div id="crd-container" class="grid grid-cols-12  gap-6">
+      <!-- card will go here -->
+      
+     
+  </div> 
+  </div>
+
+<!-- Pet details Modal -->
+ <dialog id="my_modal_1" class="modal">
+  <div class="modal-box">
+    <!-- Image of the Pet -->
+    <img id="pet-img" src="./images/Rectangle 1.jpeg" alt="image">
+    
+    <!-- Pet Name -->
+    <h2 id="pet-name" class="card-title my-5 font-[900] text-[20px]">Mister Tartosh</h2>
+    
+    <!-- Pet Details -->
+    <div class="cat-detail-container w-full grid grid-cols-2 gap-4 mb-5">
+      <!-- Breed -->
+      <div class="flex items-center gap-2">
+        <img class="w-[20px] h-[20px]" src="./images/Frame.png" alt="Breed icon">
+        <p id="pet-breed" class="text-sm font-medium text-[#131313]/70">Breed: Golden Retriever</p>
+      </div>
+    
+      <!-- Birth -->
+      <div class="flex items-center gap-2">
+        <img class="w-[20px] h-[20px]" src="./images/Frame (1).png" alt="Birth icon">
+        <p id="pet-birth" class="text-sm font-medium text-[#131313]/70">Birth: 2024</p>
+      </div>
+    
+      <!-- Gender -->
+      <div class="flex items-center gap-2">
+        <img class="w-[20px] h-[20px]" src="./images/Frame (2).png" alt="Gender icon">
+        <p id="pet-gender" class="text-sm font-medium text-[#131313]/70">Gender: Female</p>
+      </div>
+    
+      <!-- Price -->
+      <div class="flex items-center gap-2">
+        <img class="w-[20px] h-[20px]" src="./images/Frame (3).png" alt="Price icon">
+        <p id="pet-price" class="text-sm font-medium text-[#131313]/70">Price: 199$</p>
+      </div>
+    
+      <!-- Vaccine Status -->
+      <div class="flex items-center gap-2 col-span-2">
+        <img class="w-[20px] h-[20px]" src="./images/Frame (3).png" alt="Vaccine icon">
+        <p id="pet-vaccine" class="text-sm font-medium text-[#131313]/70">Vaccinated status: Partially</p>
+      </div>
+    </div>
+    
+
+    <hr>
+    
+    <!-- Detailed Information Section -->
+    <div class="cat-details">
+      <h3 class="font-[900] my-4">Details Information</h3>
+      <p id="pet-details"></p>
+    </div>
+
+    <!-- Modal Action -->
+    <div class="modal-action w-full">
+      <form class="w-full" method="dialog">
+        <button id="close-modal" class="modal-btn text-[#0E7A81] w-full font-[900]">Cancel</button>
+      </form>
+      
+    </div>
+  </div>
+ </dialog>
+<!-- Pet details Modal -->
+
+<!-- Adoption Modal -->
+<dialog id="my_modal_2" class="modal">
+  <div class="modal-box text-center">
+    <figure class="flex justify-center">
+      <img class="w-[100px]" src="./images/handshake.png" alt="img">
+    </figure>
+    <h3 class="text-3xl font-[900] text-[#131313]">Congratulations!</h3>
+    <p class="py-4 text-xl">Adoption process started for your pet</p>
+    <div>
+      <h3 id="counter-container" class="text-3xl font-[900] text-[#131313]">3</h3>
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button id="close-btn"></button>
+      </form>
+    </div>
+  </div>
+</dialog>
+<!-- Adoption Modal -->
+
+  <!-- image -->
+  <div id="pet-image-grid" class="mt-5 col-span-12 lg:col-span-3 bg-base-100 p-4 card">
+    <div id="pet-image" class="grid grid-cols-3 lg:grid-cols-2  gap-3">
+       
+      <!-- images goes here -->
+    </div>
+
+  </div> <!--pet image grid-->
+</div>  <!--data container-->
+
+
+
+</div> <!-- container  -->
+ </section>  
+ 
+<!-- ------- footer section====== -->
+
+<footer class="bg-[#131313] p-10">
+ <div class="footer lg:py-12 md:w-4/5 mx-auto text-[#fff]">
+  <nav>
+    <div class="logo gap-3 flex items-center justify-center mb-5">
+      <img class="w-[30px]" src="./images/logo.webp" alt="logo">
+      <h2 class="font-[900] text-3xl text-[#fff]">Peddy</h2>
+    </div>
+    <a class="my-1 link link-hover text-[16px]">Location: av. Washington 165, NY CA 54003</a>
+    <a class="my-1 link link-hover text-[16px]">Phone: +31 85 964 47 25</a>
+    <a class="my-1 link link-hover text-[16px]">Email: info@yourdomain.com</a>
+    <a class="my-1 link link-hover text-[16px]">Opening hours: 9:00 AM - 5:00 PM</a>
+    <div class="flex gap-6">
+      <img src="./images/Group 2.png" alt="social">
+      <img src="./images/x-2 1.png" alt="social">
+      <img src="./images/Group 6.png" alt="social">
+      <img src="./images/Group 7.png" alt="social">
+      
+    </div>
+  </nav>
+  <nav>
+    <h6 class="footer-title folt-bold text-slate-50">Useful Links</h6>
+    <a class="link link-hover text-base">Home</a>
+    <a class="link link-hover text-base">About us</a>
+    <a class="link link-hover text-base">Animals</a>
+    <a class="link link-hover text-base">Foundation</a>
+    <a class="link link-hover text-base">Contact</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title text-slate-50">Legal</h6>
+    <div class="max-w-sm mx-auto">
+      
+      <div class="form-control">
+        <label class="input-group">
+          <input type="text" placeholder="Enter your email" class="input input-bordered w-full" />
+        </label>
+        <button class="btn bg-[#0E7A81] w-full mt-3 border-none text-slate-50">Subscribe</button>
+      </div>
+    </div>
+  </nav>
+ </div>
+</footer>
+
+
+ <script src="./main.js"></script>
+</body>
+</html>
